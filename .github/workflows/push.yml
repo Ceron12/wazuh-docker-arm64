@@ -1,6 +1,6 @@
 name: Wazuh Docker pipeline
 
-on: [pull_request]
+on: workflow_dispatch
 
 jobs:
   build-docker-images:
