@@ -1,0 +1,30 @@
+name: docekrarm
+
+on: workflow_dispatch
+
+jobs:
+  build-and-push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Docker Buildx
+      run: |
+        docker buildx create --use
+    - name: Set date
+      id: date
+      run: echo "::set-output name=date::$(date +'%m-%d-%Y')"
+    - name: Authenticate
+      uses: docker/login-action@v1
+      with:
+        registry: quay.io
+        username: ${{ secrets.QUAY_USERNAME }}
+        password: ${{ secrets.QUAY_PASSWORD }}
+    - name: Build and Push image
+      run: |
+        docker buildx build \
+          --file ./build-docker-images/wazuh-dashboard/Dockerfile \
+          --platform linux/arm64,linux/amd64\
+          --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }}
