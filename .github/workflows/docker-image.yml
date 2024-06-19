@@ -20,5 +20,5 @@ jobs:
       run: |
         docker buildx build \
           --file ./build-docker-images/wazuh-dashboard/Dockerfile \
-          --platform linux/arm64,linux/amd64\
+          --platform linux/arm64,linux/amd64 \
           --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }}
