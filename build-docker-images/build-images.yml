@@ -5,6 +5,7 @@ services:
   wazuh.manager:
     build:
       context: wazuh-manager/
+      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
@@ -39,6 +40,7 @@ services:
   wazuh.indexer:
     build:
       context: wazuh-indexer/
+      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
@@ -60,6 +62,7 @@ services:
   wazuh.dashboard:
     build:
       context: wazuh-dashboard/
+      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
