@@ -18,4 +18,5 @@ jobs:
       run: echo "::set-output name=date::$(date +'%m-%d-%Y')"
     - name: Build and Push image
       run: |
-        docker buildx build --file ./build-docker-images/wazuh-dashboard/Dockerfile --platform linux/arm64,linux/amd64 --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }}
+        docker buildx build \
+        --platform linux/arm64,linux/amd64 --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }} ./build-docker-images/wazuh-dashboard/Dockerfile
