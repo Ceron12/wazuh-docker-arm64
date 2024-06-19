@@ -3,9 +3,9 @@ version: '3.7'
 
 services:
   wazuh.manager:
+    platform: linux/arm64/v8
     build:
       context: wazuh-manager/
-      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
@@ -38,9 +38,9 @@ services:
       - filebeat_var:/var/lib/filebeat
 
   wazuh.indexer:
+    platform: linux/arm64/v8
     build:
       context: wazuh-indexer/
-      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
@@ -60,9 +60,9 @@ services:
         hard: 65536
 
   wazuh.dashboard:
+    platform: linux/arm64/v8
     build:
       context: wazuh-dashboard/
-      platform: linux/arm64/v8
       args:
         WAZUH_VERSION: ${WAZUH_VERSION}
         WAZUH_TAG_REVISION: ${WAZUH_TAG_REVISION}
