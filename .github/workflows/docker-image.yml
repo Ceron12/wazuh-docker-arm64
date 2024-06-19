@@ -19,4 +19,4 @@ jobs:
     - name: Build and Push image
       run: |
         ls build-docker-images/wazuh-dashboard && docker buildx build \
-        --platform linux/arm64,linux/amd64 --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }} build-docker-images/wazuh-dashboard
+        --platform linux/arm64,linux/amd64 --tag ceron/wazuh-dashboard:${{ steps.date.outputs.date }} build-docker-images/wazuh-dashboard --build-arg WAZUH_VERSION=3.7 --build-arg WAZUH_TAG_REVISION=3.8.0 --build-arg WAZUH_UI_REVISION=1
